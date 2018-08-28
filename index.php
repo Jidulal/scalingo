@@ -1,4 +1,14 @@
 <?php
-echo phpinfo();
-	echo '<html><head><title>Sample Scalingo App</title></head><body><table border="1"><tr><th>Adding InfluxDB to your app</th></tr><tr><td>You can add the InfluxDB addon through the Dashboard or through the command line interface. The capacity of your database is elastic, you will be able to upgrade it later.</td></tr></table></body></html>';
+	$url = parse_url(getenv('SCALINGO_MYSQL_URL'));
+
+	
+	$db = array(
+		'dsn'	=> getenv('SCALINGO_MYSQL_URL'),
+		'hostname' => $url['host'] . ':' . $url['port'],
+		'username' => $url['user'],
+		'password' => $url['pass'],
+		'database' => substr($url['path'], 1),
+		'dbdriver' => 'mysqli'
+	);
+	echo "<pre>"; print_r($db); echo "</pre>";
 ?>
