@@ -22,4 +22,12 @@
 	echo "<pre>"; print_r($database); echo "</pre><br>";
 
 	
+	$points = array(
+		new Point('test_metric',0.64, ['host' => 'server01', 'region' => 'us-west'], ['cpucount' => 10], 1435255849	),
+		new Point('test_metric',0.84, ['host' => 'server01', 'region' => 'us-west'], ['cpucount' => 10], 1435255849	)
+	);
+	
+	$result = $database->writePoints($points, Database::PRECISION_SECONDS);
+	
+	echo "<pre>"; print_r($result); echo "</pre><br>";
 ?>
