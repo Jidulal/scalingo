@@ -9,12 +9,12 @@
 		'password' => $url['pass'],
 		'database' => substr($url['path'], 1)
 	);
-	echo "<pre>"; print_r($db); echo "</pre>";
+	echo "<pre>"; print_r($db); echo "</pre><br>";
 	
 	
 	
 	require 'vendor/autoload.php';
-
+	echo "<pre>"; print_r(111111111111111111111); echo "</pre><br>";
 	// vagrant ip
 	$host = $url['host'];
 
@@ -28,9 +28,9 @@
 
 		return ((float) $num);
 	}
-
+	echo "<pre>"; print_r(222222222222222); echo "</pre><br>";
 	$client = new \InfluxDB\Client($host);
-
+echo "<pre>"; print_r(33333333333333); echo "</pre><br>";
 	$database = $client->selectDB(substr($url['path'], 1));
 
 	/* if ($database->exists()) {
@@ -38,7 +38,8 @@
 	} */
 
 	//$database->create(new \InfluxDB\Database\RetentionPolicy('test', '12w', 1, true));
-
+echo "<pre>"; print_r($database); echo "</pre><br>";
+echo "<pre>"; print_r(44444444444444444444); echo "</pre><br>";
 
 	$start = microtime(true);
 
@@ -58,14 +59,16 @@
 
 	// insert the points
 	$database->writePoints($points);
-
+echo "<pre>"; print_r(555555555555555555555555); echo "</pre><br>";
 	$end = microtime(true);
 
 	$country = $countries[array_rand($countries)];
 	$color = $colors[array_rand($colors)];
-
+echo "<pre>"; print_r(666666666666666); echo "</pre><br>";
 	$results = $database->query("SELECT * FROM flags WHERE country = '$country' LIMIT 5")->getPoints();
+	echo "<pre>"; print_r($results); echo "</pre><br>";
 	$results2 = $database->query("SELECT * FROM flags WHERE color = '$color' LIMIT 5")->getPoints();
+	echo "<pre>"; print_r($results2); echo "</pre><br>";
 
 	echo "Showing top 5 flags from country $country:" . PHP_EOL;
 	print_r($results);
