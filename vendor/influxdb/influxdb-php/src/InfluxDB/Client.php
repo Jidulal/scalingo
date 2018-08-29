@@ -108,9 +108,9 @@ class Client
      */
     public function __construct(
         $host,
-        $port = 8086,
-        $username = '',
-        $password = '',
+        $port = 30041,
+        $username = 'pubnubtestapp_1617',
+        $password = 'DznP0RCLz-gR3Fs1gKmO',
         $ssl = false,
         $verifySSL = false,
         $timeout = 0,
