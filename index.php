@@ -27,7 +27,15 @@
 		new Point('test_metric',0.84, ['host' => 'server01', 'region' => 'us-west'], ['cpucount' => 10], 1435255849	)
 	);
 	
-	$result = $database->writePoints($points, Database::PRECISION_SECONDS);
+	$inser = $database->writePoints($points, Database::PRECISION_SECONDS);
 	
-	echo "<pre>"; print_r($result); echo "</pre><br>";
+	echo "<pre>"; print_r($inser); echo "</pre><br>";
+	
+	
+	
+	$result = $database->query('select * from test_metric');
+
+	$datas = $result->getPoints();
+	
+	echo "<pre>"; print_r($datas); echo "</pre><br>";
 ?>
