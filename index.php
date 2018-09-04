@@ -9,7 +9,7 @@
 		'password' => $url['pass'],
 		'database' => substr($url['path'], 1)
 	);
-	echo "<pre>"; print_r($db); echo "</pre><br>";
+	//echo "<pre>"; print_r($db); echo "</pre><br>";
 	
 	
 	
@@ -17,6 +17,10 @@
 	
 	$client = new \InfluxDB\Client($url['host'], $url['port']);
 	echo "<pre>"; print_r($client); echo "</pre><br>";
+	
+	$listdb = $client->listDatabases();
+	
+	echo "<pre>"; print_r($listdb); echo "</pre><br>";
 	
 	$database = $client->selectDB(substr($url['path'], 1));
 	echo "<pre>"; print_r($database); echo "</pre><br>";
